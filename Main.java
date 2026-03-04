@@ -35,4 +35,18 @@ public class Main {
                     open.lookup(keys[i]);
                 long t2 = System.currentTimeMillis();
                 openTime += (t2 - t1);
+                 long t3 = System.currentTimeMillis();
+                for (int i = 0; i < used; i++)
+                    chain.lookup(keys[i]);
+                long t4 = System.currentTimeMillis();
+                chainTime += (t4 - t3);
+            }
+
+            System.out.printf("%d%%\t%.4f\t%.4f\n",
+                    load,
+                    openTime / REP / 1000.0,
+                    chainTime / REP / 1000.0);
+        }
+    }
+}
 
