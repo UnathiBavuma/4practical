@@ -11,3 +11,19 @@ public class ChainedHash {
             value = v;
         }
     }
+     private LinkedList<Entry>[] table;
+    private int m;
+
+    @SuppressWarnings("unchecked")
+    public ChainedHash(int m) {
+        this.m = m;
+        table = new LinkedList[m + 1];   // create array
+
+        for (int i = 1; i <= m; i++) {
+            table[i] = new LinkedList<>();  // initialize each list
+        }
+    }
+
+    private int hash(String key) {
+        return (Math.abs(key.hashCode()) % m) + 1;
+    }
