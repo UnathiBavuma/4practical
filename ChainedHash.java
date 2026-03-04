@@ -27,3 +27,16 @@ public class ChainedHash {
     private int hash(String key) {
         return (Math.abs(key.hashCode()) % m) + 1;
     }
+     public void insert(String key, String value) {
+        int i = hash(key);
+
+        for (Entry e : table[i]) {
+            if (e.key.equals(key)) {
+                e.value = value;   // update if exists
+                return;
+            }
+        }
+
+        table[i].add(new Entry(key, value));
+    }
+
