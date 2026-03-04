@@ -25,3 +25,12 @@ public class OpenHash {
         if (table[i] == null) size++;
         table[i] = new Entry(key, value);
     }
+    public String lookup(String key) {
+        int i = hash(key);
+        while (table[i] != null) {
+            if (table[i].key.equals(key))
+                return table[i].value;
+            i = (i % m) + 1;
+        }
+        return null;
+    }
