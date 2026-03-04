@@ -50,5 +50,19 @@ public class ChainedHash {
 
         return null;
     }
+       public String remove(String key) {
+        int i = hash(key);
+
+        for (Entry e : table[i]) {
+            if (e.key.equals(key)) {
+                String val = e.value;
+                table[i].remove(e);
+                return val;
+            }
+        }
+
+        return null;
+    }
+}
 
 
