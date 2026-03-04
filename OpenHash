@@ -14,3 +14,14 @@ public class OpenHash {
     private int hash(String key) {
         return (Math.abs(key.hashCode()) % m) + 1;
     }
+     public boolean isFull() { return size == m; }
+    public boolean isEmpty() { return size == 0; }
+
+    public void insert(String key, String value) {
+        int i = hash(key);
+        while (table[i] != null && !table[i].key.equals(key))
+            i = (i % m) + 1; // linear probing
+
+        if (table[i] == null) size++;
+        table[i] = new Entry(key, value);
+    }
