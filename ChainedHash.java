@@ -39,4 +39,16 @@ public class ChainedHash {
 
         table[i].add(new Entry(key, value));
     }
+     public String lookup(String key) {
+        int i = hash(key);
+
+        for (Entry e : table[i]) {
+            if (e.key.equals(key)) {
+                return e.value;
+            }
+        }
+
+        return null;
+    }
+
 
