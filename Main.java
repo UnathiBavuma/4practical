@@ -20,3 +20,19 @@ public class Main {
             int m = used;
 
             double openTime = 0, chainTime = 0;
+            for (int r = 0; r < REP; r++) {
+
+                OpenHash open = new OpenHash(m);
+                ChainedHash chain = new ChainedHash(m);
+
+                for (int i = 0; i < used; i++) {
+                    open.insert(keys[i], keys[i]);
+                    chain.insert(keys[i], keys[i]);
+                }
+
+                long t1 = System.currentTimeMillis();
+                for (int i = 0; i < used; i++)
+                    open.lookup(keys[i]);
+                long t2 = System.currentTimeMillis();
+                openTime += (t2 - t1);
+
