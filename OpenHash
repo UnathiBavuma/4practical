@@ -3,3 +3,14 @@ public class OpenHash {
         String key, value;
         Entry(String k, String v) { key = k; value = v; }
     }
+    private Entry[] table;
+    private int m, size = 0;
+
+    public OpenHash(int m) {
+        this.m = m;
+        table = new Entry[m + 1]; // 1..m
+    }
+
+    private int hash(String key) {
+        return (Math.abs(key.hashCode()) % m) + 1;
+    }
